@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haipa.CommonClient", "src\Haipa.CommonClient\Haipa.CommonClient.csproj", "{1261BE23-F909-402F-A17C-B183AF1E9398}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haipa.CommonClient.Commands", "src\Haipa.CommonClient.Commands\Haipa.CommonClient.Commands.csproj", "{6F5FBAFF-BB38-4E2D-B8EF-64232B15CD89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1261BE23-F909-402F-A17C-B183AF1E9398}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1261BE23-F909-402F-A17C-B183AF1E9398}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1261BE23-F909-402F-A17C-B183AF1E9398}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1261BE23-F909-402F-A17C-B183AF1E9398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F5FBAFF-BB38-4E2D-B8EF-64232B15CD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5FBAFF-BB38-4E2D-B8EF-64232B15CD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5FBAFF-BB38-4E2D-B8EF-64232B15CD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5FBAFF-BB38-4E2D-B8EF-64232B15CD89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31525E09-2238-4088-91CD-058B4CA43934}
+	EndGlobalSection
+EndGlobal

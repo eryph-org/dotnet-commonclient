@@ -1,0 +1,13 @@
+{
+  "name": "dotnet-commonclient",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haipa/dotnet-commonclient.git"
+  },
+  "author": "dbosoft",
+  "license": "MIT",
+  "dependencies": {
+    "autorest": "^2.0.4413"
+  }
+}
