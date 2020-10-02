@@ -46,10 +46,25 @@ steps:
     command: pack
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-build'
     
-- task: PublishBuildArtifacts@1
-  displayName: publish artifacts
+- task: PowerShell@2
+  displayName: generate cmdlet
   inputs:
-    ArtifactName: drop
+    filePath: 'build/build-cmdlet.ps1'
+    arguments: '-Configuration $(BuildConfiguration) -OutputDir $(Build.ArtifactStagingDirectory)' 
+
+- task: PublishBuildArtifacts@1
+  displayName: publish cmdlet artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\cmdlet'
+    ArtifactName: 'cmdlet'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  displayName: publish nuget artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\packages'
+    ArtifactName: 'packages'
+    publishLocation: 'Container'
     
 - task: NuGetCommand@2
   displayName: publish to project nuget repo
