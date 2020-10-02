@@ -44,7 +44,7 @@ steps:
   displayName: dotnet pack
   inputs:
     command: pack
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory) --no-build'
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)\packages'
     
 - task: PowerShell@2
   displayName: generate cmdlet
