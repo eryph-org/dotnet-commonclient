@@ -3,6 +3,7 @@ resources:
   - repository: build
     type: github
     name: Haipa/build
+    endpoint: haipa
 
 
 extends:
