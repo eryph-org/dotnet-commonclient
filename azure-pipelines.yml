@@ -37,11 +37,14 @@ stages:
         command: build
         projects: '**/*.csproj'
         arguments: '--configuration $(buildConfiguration) --no-restore'
+        
     - task: DotNetCoreCLI@2
       displayName: dotnet pack
       inputs:
         command: pack
-        arguments: '--no-build --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)\packages'
+        packDirectory: '$(Build.ArtifactStagingDirectory)\packages'
+        arguments: '--no-build --configuration $(BuildConfiguration)'
+        versioningScheme: 'off'
 
     - task: PublishBuildArtifacts@1
       displayName: publish nuget artifacts
