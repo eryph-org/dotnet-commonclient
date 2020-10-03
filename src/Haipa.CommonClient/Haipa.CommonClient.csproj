@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Haipa/dotnet-commonclient</PackageProjectUrl>
+    <Copyright>dbosoft GmbH and Haipa contributors</Copyright>
+    <Authors>dbosoft and Haipa contributors</Authors>
+    <Company>dbosoft GmbH</Company>
+    <Product>Haipa</Product>
+    <RepositoryUrl>https://github.com/Haipa/dotnet-commonclient</RepositoryUrl>
+    <Description>.NET client library for Haipa Common API.</Description>
   </PropertyGroup>
 
   <ItemGroup>
