@@ -3,7 +3,7 @@ resources:
   - repository: build
     type: github
     name: Haipa/build
-    endpoint: public
+
 
 extends:
   template: pipelines/templates/dotnetclient@build
