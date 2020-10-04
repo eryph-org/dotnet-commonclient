@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @()
+RequiredModules = @("Haipa.ClientRuntime.Configuration")
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -116,7 +116,7 @@ PrivateData = @{
         # RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
-        ExternalModuleDependencies = @("Haipa.ClientRuntime.Configuration")
+        # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
