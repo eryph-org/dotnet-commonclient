@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @("Haipa.ClientRuntime.Configuration")
+RequiredModules = @(@{ModuleName="Haipa.ClientRuntime.Configuration"; ModuleVersion="0.1.0"; GUID="31a5834e-973e-478f-a48d-cea5f1e92962"})
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
