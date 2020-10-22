@@ -28,7 +28,7 @@ namespace Haipa.CommonClient
             /// Indicates whether the total count of items within a collection are returned
             /// in the result.
             /// </param>
-            public static OperationList List(this IOperations operations, Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false)
+            public static Haipa.ClientRuntime.IPage<Operation> List(this IOperations operations, Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false)
             {
                 return operations.ListAsync(odataQuery, select, count).GetAwaiter().GetResult();
             }
@@ -49,7 +49,7 @@ namespace Haipa.CommonClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationList> ListAsync(this IOperations operations, Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Haipa.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, select, count, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -100,44 +100,26 @@ namespace Haipa.CommonClient
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='key'>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='select'>
-            /// Limits the properties returned in the result.
-            /// </param>
-            /// <param name='count'>
-            /// Indicates whether the total count of items within a collection are returned
-            /// in the result.
-            /// </param>
-            public static OperationLogEntryList GetLogEntries(this IOperations operations, System.Guid key, Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry>), string select = default(string), bool? count = false)
+            public static Haipa.ClientRuntime.IPage<Operation> ListNext(this IOperations operations, string nextPageLink)
             {
-                return operations.GetLogEntriesAsync(key, odataQuery, select, count).GetAwaiter().GetResult();
+                return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='key'>
-            /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
-            /// </param>
-            /// <param name='select'>
-            /// Limits the properties returned in the result.
-            /// </param>
-            /// <param name='count'>
-            /// Indicates whether the total count of items within a collection are returned
-            /// in the result.
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<OperationLogEntryList> GetLogEntriesAsync(this IOperations operations, System.Guid key, Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry>), string select = default(string), bool? count = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Haipa.ClientRuntime.IPage<Operation>> ListNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetLogEntriesWithHttpMessagesAsync(key, odataQuery, select, count, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

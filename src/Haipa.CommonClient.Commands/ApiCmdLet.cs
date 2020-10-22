@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
@@ -61,7 +62,7 @@ To access the system-client you will have to run this command as Administrator (
         protected void WaitForOperation(Operation operation, Action<string,Guid> resourceWriterDelegate = null)
         {
             var timeStamp = DateTime.Parse("2018-01-01", CultureInfo.InvariantCulture);
-
+            var processedLogIds = new List<Guid>();
             while (!Stopping)
             {
                 var timestampString = timeStamp.ToUniversalTime().ToString("o", System.Globalization.CultureInfo.InvariantCulture);
@@ -73,6 +74,11 @@ To access the system-client you will have to run this command as Administrator (
 
                 foreach (var logEntry in currentOperation.LogEntries)
                 {
+                    if(processedLogIds.Contains(logEntry.Id.GetValueOrDefault()))
+                        continue;
+
+                    processedLogIds.Add(logEntry.Id.GetValueOrDefault());
+                    
                     WriteVerbose($"Operation {currentOperation.Id}: {logEntry.Message}");
                     timeStamp = logEntry.Timestamp.GetValueOrDefault();
                     Task.Delay(100).GetAwaiter().GetResult();

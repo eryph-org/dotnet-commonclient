@@ -39,7 +39,7 @@ namespace Haipa.CommonClient
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<OperationList>> ListWithHttpMessagesAsync(Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <param name='key'>
         /// </param>
         /// <param name='select'>
@@ -62,17 +62,8 @@ namespace Haipa.CommonClient
         /// Thrown when unable to deserialize the response
         /// </exception>
         Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(System.Guid key, string select = default(string), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <param name='key'>
-        /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
-        /// </param>
-        /// <param name='select'>
-        /// Limits the properties returned in the result.
-        /// </param>
-        /// <param name='count'>
-        /// Indicates whether the total count of items within a collection are
-        /// returned in the result.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -86,6 +77,9 @@ namespace Haipa.CommonClient
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<OperationLogEntryList>> GetLogEntriesWithHttpMessagesAsync(System.Guid key, Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

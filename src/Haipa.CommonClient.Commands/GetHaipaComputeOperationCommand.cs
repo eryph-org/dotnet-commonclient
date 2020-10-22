@@ -20,19 +20,32 @@ namespace Haipa.CommonClient.Commands
 
         protected override void ProcessRecord()
         {
+            var defaultExpandOptions = $"{nameof(Operation.LogEntries)},{nameof(Operation.Resources)}";
+
             if (Id != null)
             {
                 foreach (var id in Id)
                 {
-                    WriteObject(CommonClient.Operations.Get(id, null, "LogEntries,Resources,Tasks"));
+                    WriteObject(CommonClient.Operations.Get(id, null, defaultExpandOptions));
                 }
 
                 return;
             }
 
-            var query = new ODataQuery<Operation> { Expand = "LogEntries,Resources,Tasks" };
+            var query = new ODataQuery<Operation>{Expand = defaultExpandOptions };
+            var pageResponse = CommonClient.Operations.List(query);
 
-            WriteObject(CommonClient.Operations.List(query).Value, true);
+
+            while (!Stopping)
+            {
+                WriteObject(pageResponse, true);
+
+                if (string.IsNullOrWhiteSpace(pageResponse.NextPageLink))
+                    break;
+
+                pageResponse = CommonClient.Operations.ListNext(pageResponse.NextPageLink);
+
+            }
 
 
         }

@@ -70,7 +70,7 @@ namespace Haipa.CommonClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<OperationList>> ListWithHttpMessagesAsync(Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -198,7 +198,7 @@ namespace Haipa.CommonClient
                 throw ex;
             }
             // Create Result
-            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<OperationList>();
+            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -211,7 +211,7 @@ namespace Haipa.CommonClient
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<OperationList>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Operation>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -407,17 +407,8 @@ namespace Haipa.CommonClient
             return _result;
         }
 
-        /// <param name='key'>
-        /// </param>
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
-        /// </param>
-        /// <param name='select'>
-        /// Limits the properties returned in the result.
-        /// </param>
-        /// <param name='count'>
-        /// Indicates whether the total count of items within a collection are returned
-        /// in the result.
+        /// <param name='nextPageLink'>
+        /// The NextLink from the previous successful call to List operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -431,11 +422,21 @@ namespace Haipa.CommonClient
         /// <exception cref="SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<OperationLogEntryList>> GetLogEntriesWithHttpMessagesAsync(System.Guid key, Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<OperationLogEntry>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (nextPageLink == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "nextPageLink");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -443,34 +444,14 @@ namespace Haipa.CommonClient
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("odataQuery", odataQuery);
-                tracingParameters.Add("key", key);
-                tracingParameters.Add("select", select);
-                tracingParameters.Add("count", count);
+                tracingParameters.Add("nextPageLink", nextPageLink);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "GetLogEntries", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListNext", tracingParameters);
             }
             // Construct URL
-            var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "api/v1/Operations/{key}/LogEntries").ToString();
-            _url = _url.Replace("{key}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(key, Client.SerializationSettings).Trim('"')));
+            string _url = "{nextLink}";
+            _url = _url.Replace("{nextLink}", nextPageLink);
             List<string> _queryParameters = new List<string>();
-            if (odataQuery != null)
-            {
-                var _odataFilter = odataQuery.ToString();
-                if (!string.IsNullOrEmpty(_odataFilter))
-                {
-                    _queryParameters.Add(_odataFilter);
-                }
-            }
-            if (select != null)
-            {
-                _queryParameters.Add(string.Format("$select={0}", System.Uri.EscapeDataString(select)));
-            }
-            if (count != null)
-            {
-                _queryParameters.Add(string.Format("$count={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(count, Client.SerializationSettings).Trim('"'))));
-            }
             if (_queryParameters.Count > 0)
             {
                 _url += (_url.Contains("?") ? "&" : "?") + string.Join("&", _queryParameters);
@@ -564,7 +545,7 @@ namespace Haipa.CommonClient
                 throw ex;
             }
             // Create Result
-            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<OperationLogEntryList>();
+            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -577,7 +558,7 @@ namespace Haipa.CommonClient
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<OperationLogEntryList>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<Operation>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
