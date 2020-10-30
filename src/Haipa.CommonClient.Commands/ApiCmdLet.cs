@@ -101,7 +101,7 @@ To access the system-client you will have to run this command as Administrator (
             if (resourceWriterDelegate != null)
             {
                 var resourceData =
-                    CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), "Resources", "Resources");
+                    CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), "Id,Resources", "Resources");
                 foreach (var resource in resourceData.Resources.Where(x=>x.ResourceId.GetValueOrDefault()!= Guid.Empty))
                 {
                     resourceWriterDelegate(resource.ResourceType, resource.ResourceId.GetValueOrDefault());
