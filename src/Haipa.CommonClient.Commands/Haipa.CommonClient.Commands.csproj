@@ -19,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Haipa.ClientRuntime.Authentication" Version="0.1.0-ci.20" />
+    <PackageReference Include="Haipa.ClientRuntime.Authentication" Version="0.1.1-ci.1" />
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
