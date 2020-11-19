@@ -59,7 +59,7 @@ To access the system-client you will have to run this command as Administrator (
             Dispose();
         }
 
-        protected void WaitForOperation(Operation operation, Action<string,Guid> resourceWriterDelegate = null)
+        protected void WaitForOperation(Operation operation, Action<string,string> resourceWriterDelegate = null)
         {
             var timeStamp = DateTime.Parse("2018-01-01", CultureInfo.InvariantCulture);
             var processedLogIds = new List<Guid>();
@@ -102,9 +102,9 @@ To access the system-client you will have to run this command as Administrator (
             {
                 var resourceData =
                     CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), "Id,Resources", "Resources");
-                foreach (var resource in resourceData.Resources.Where(x=>x.ResourceId.GetValueOrDefault()!= Guid.Empty))
+                foreach (var resource in resourceData.Resources.Where(x=>!string.IsNullOrWhiteSpace(x.ResourceId)))
                 {
-                    resourceWriterDelegate(resource.ResourceType, resource.ResourceId.GetValueOrDefault());
+                    resourceWriterDelegate(resource.ResourceType, resource.ResourceId);
                 }
 
                 if (resourceData.Resources.Count > 0)
