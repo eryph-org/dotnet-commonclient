@@ -65,12 +65,9 @@ To access the system-client you will have to run this command as Administrator (
             var processedLogIds = new List<Guid>();
             while (!Stopping)
             {
-                var timestampString = timeStamp.ToUniversalTime().ToString("o", System.Globalization.CultureInfo.InvariantCulture);
-
                 Task.Delay(1000).GetAwaiter().GetResult();
 
-                var currentOperation = CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), null,
-                    $"LogEntries($filter=Timestamp gt {timestampString})");
+                var currentOperation = CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), timeStamp);
 
                 foreach (var logEntry in currentOperation.LogEntries)
                 {
@@ -101,7 +98,7 @@ To access the system-client you will have to run this command as Administrator (
             if (resourceWriterDelegate != null)
             {
                 var resourceData =
-                    CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), "Id,Resources", "Resources");
+                    CommonClient.Operations.Get(operation.Id.GetValueOrDefault());
                 foreach (var resource in resourceData.Resources.Where(x=>!string.IsNullOrWhiteSpace(x.ResourceId)))
                 {
                     resourceWriterDelegate(resource.ResourceType, resource.ResourceId);
@@ -111,7 +108,7 @@ To access the system-client you will have to run this command as Administrator (
                     return;
             }
 
-            WriteObject(CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), null, "LogEntries,Resources"));
+            WriteObject(CommonClient.Operations.Get(operation.Id.GetValueOrDefault()));
         }
 
         protected virtual void Dispose(bool disposing)

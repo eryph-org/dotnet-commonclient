@@ -5,7 +5,6 @@
 namespace Haipa.CommonClient
 {
     using Haipa.ClientRuntime;
-    using Haipa.ClientRuntime.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -17,15 +16,38 @@ namespace Haipa.CommonClient
     /// </summary>
     public partial interface IOperations
     {
-        /// <param name='odataQuery'>
-        /// OData parameters to apply to the operation.
+        /// <summary>
+        /// Get a operation
+        /// </summary>
+        /// <remarks>
+        /// Get a operation
+        /// </remarks>
+        /// <param name='id'>
         /// </param>
-        /// <param name='select'>
-        /// Limits the properties returned in the result.
+        /// <param name='logTimeStamp'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List all Operations
+        /// </summary>
+        /// <remarks>
+        /// List all Operations
+        /// </remarks>
+        /// <param name='logTimeStamp'>
         /// </param>
         /// <param name='count'>
-        /// Indicates whether the total count of items within a collection are
-        /// returned in the result.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -39,29 +61,13 @@ namespace Haipa.CommonClient
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-        /// <param name='key'>
-        /// </param>
-        /// <param name='select'>
-        /// Limits the properties returned in the result.
-        /// </param>
-        /// <param name='expand'>
-        /// Indicates the related entities to be represented inline. The
-        /// maximum depth is 2.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(System.Guid key, string select = default(string), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// List all Operations
+        /// </summary>
+        /// <remarks>
+        /// List all Operations
+        /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.
         /// </param>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Management.Automation;
 using Haipa.ClientRuntime;
-using Haipa.ClientRuntime.OData;
 using JetBrains.Annotations;
 
 namespace Haipa.CommonClient.Commands
@@ -20,20 +19,17 @@ namespace Haipa.CommonClient.Commands
 
         protected override void ProcessRecord()
         {
-            var defaultExpandOptions = $"{nameof(Operation.LogEntries)},{nameof(Operation.Resources)}";
-
             if (Id != null)
             {
                 foreach (var id in Id)
                 {
-                    WriteObject(CommonClient.Operations.Get(id, null, defaultExpandOptions));
+                    WriteObject(CommonClient.Operations.Get(id));
                 }
 
                 return;
             }
 
-            var query = new ODataQuery<Operation>{Expand = defaultExpandOptions };
-            var pageResponse = CommonClient.Operations.List(query);
+            var pageResponse = CommonClient.Operations.List();
 
 
             while (!Stopping)

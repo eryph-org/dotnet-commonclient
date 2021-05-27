@@ -5,7 +5,6 @@
 namespace Haipa.CommonClient
 {
     using Haipa.ClientRuntime;
-    using Haipa.ClientRuntime.OData;
     using Models;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,88 +14,96 @@ namespace Haipa.CommonClient
     /// </summary>
     public static partial class OperationsExtensions
     {
+            /// <summary>
+            /// Get a operation
+            /// </summary>
+            /// <remarks>
+            /// Get a operation
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
+            /// <param name='id'>
             /// </param>
-            /// <param name='select'>
-            /// Limits the properties returned in the result.
+            /// <param name='logTimeStamp'>
             /// </param>
-            /// <param name='count'>
-            /// Indicates whether the total count of items within a collection are returned
-            /// in the result.
-            /// </param>
-            public static Haipa.ClientRuntime.IPage<Operation> List(this IOperations operations, Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false)
+            public static Operation Get(this IOperations operations, System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?))
             {
-                return operations.ListAsync(odataQuery, select, count).GetAwaiter().GetResult();
+                return operations.GetAsync(id, logTimeStamp).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Get a operation
+            /// </summary>
+            /// <remarks>
+            /// Get a operation
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='odataQuery'>
-            /// OData parameters to apply to the operation.
+            /// <param name='id'>
             /// </param>
-            /// <param name='select'>
-            /// Limits the properties returned in the result.
-            /// </param>
-            /// <param name='count'>
-            /// Indicates whether the total count of items within a collection are returned
-            /// in the result.
+            /// <param name='logTimeStamp'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Haipa.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, Haipa.ClientRuntime.OData.ODataQuery<Operation> odataQuery = default(Haipa.ClientRuntime.OData.ODataQuery<Operation>), string select = default(string), bool? count = false, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Operation> GetAsync(this IOperations operations, System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, select, count, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(id, logTimeStamp, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
+            /// <summary>
+            /// List all Operations
+            /// </summary>
+            /// <remarks>
+            /// List all Operations
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='key'>
+            /// <param name='logTimeStamp'>
             /// </param>
-            /// <param name='select'>
-            /// Limits the properties returned in the result.
+            /// <param name='count'>
             /// </param>
-            /// <param name='expand'>
-            /// Indicates the related entities to be represented inline. The maximum depth
-            /// is 2.
-            /// </param>
-            public static Operation Get(this IOperations operations, System.Guid key, string select = default(string), string expand = default(string))
+            public static Haipa.ClientRuntime.IPage<Operation> List(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?))
             {
-                return operations.GetAsync(key, select, expand).GetAwaiter().GetResult();
+                return operations.ListAsync(logTimeStamp, count).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// List all Operations
+            /// </summary>
+            /// <remarks>
+            /// List all Operations
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='key'>
+            /// <param name='logTimeStamp'>
             /// </param>
-            /// <param name='select'>
-            /// Limits the properties returned in the result.
-            /// </param>
-            /// <param name='expand'>
-            /// Indicates the related entities to be represented inline. The maximum depth
-            /// is 2.
+            /// <param name='count'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Operation> GetAsync(this IOperations operations, System.Guid key, string select = default(string), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Haipa.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(key, select, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(logTimeStamp, count, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
+            /// <summary>
+            /// List all Operations
+            /// </summary>
+            /// <remarks>
+            /// List all Operations
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -108,6 +115,12 @@ namespace Haipa.CommonClient
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// List all Operations
+            /// </summary>
+            /// <remarks>
+            /// List all Operations
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>

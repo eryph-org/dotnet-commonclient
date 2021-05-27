@@ -19,7 +19,7 @@ namespace Haipa.CommonClient.Models
          /// <summary>
          /// Gets the link to the next page.
          /// </summary>
-         [JsonProperty("@odata.nextLink")]
+         [JsonProperty("nextLink")]
          public string NextPageLink { get; private set; }
 
          [JsonProperty("value")]
