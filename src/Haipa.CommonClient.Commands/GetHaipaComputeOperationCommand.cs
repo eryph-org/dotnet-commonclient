@@ -15,7 +15,7 @@ namespace Haipa.CommonClient.Commands
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Guid[] Id { get; set; }
+        public string[] Id { get; set; }
 
         protected override void ProcessRecord()
         {
