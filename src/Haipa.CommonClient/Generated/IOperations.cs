@@ -38,7 +38,10 @@ namespace Haipa.CommonClient
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all Operations
         /// </summary>

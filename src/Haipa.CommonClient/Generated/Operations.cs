@@ -66,11 +66,21 @@ namespace Haipa.CommonClient
         /// <exception cref="SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
+        /// <exception cref="ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        /// <exception cref="System.ArgumentNullException">
+        /// Thrown when a required parameter is null
+        /// </exception>
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (id == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "id");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -86,7 +96,7 @@ namespace Haipa.CommonClient
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "v1/operations/{id}").ToString();
-            _url = _url.Replace("{id}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(id, Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{id}", System.Uri.EscapeDataString(id));
             List<string> _queryParameters = new List<string>();
             if (logTimeStamp != null)
             {

@@ -62,19 +62,19 @@ To access the system-client you will have to run this command as Administrator (
         protected void WaitForOperation(Operation operation, Action<string,string> resourceWriterDelegate = null)
         {
             var timeStamp = DateTime.Parse("2018-01-01", CultureInfo.InvariantCulture);
-            var processedLogIds = new List<Guid>();
+            var processedLogIds = new List<string>();
             while (!Stopping)
             {
                 Task.Delay(1000).GetAwaiter().GetResult();
 
-                var currentOperation = CommonClient.Operations.Get(operation.Id.GetValueOrDefault(), timeStamp);
+                var currentOperation = CommonClient.Operations.Get(operation.Id, timeStamp);
 
                 foreach (var logEntry in currentOperation.LogEntries)
                 {
-                    if(processedLogIds.Contains(logEntry.Id.GetValueOrDefault()))
+                    if(processedLogIds.Contains(logEntry.Id))
                         continue;
 
-                    processedLogIds.Add(logEntry.Id.GetValueOrDefault());
+                    processedLogIds.Add(logEntry.Id);
                     
                     WriteVerbose($"Operation {currentOperation.Id}: {logEntry.Message}");
                     timeStamp = logEntry.Timestamp.GetValueOrDefault();
@@ -88,7 +88,7 @@ To access the system-client you will have to run this command as Administrator (
                         continue;
                     case "Failed":
                         WriteError(new ErrorRecord(new ApiServiceException(currentOperation.StatusMessage),
-                            "HaipaOperationFailed", ErrorCategory.InvalidResult, operation.Id.GetValueOrDefault()));
+                            "HaipaOperationFailed", ErrorCategory.InvalidResult, operation.Id));
                         break;
                 }
 
@@ -98,7 +98,7 @@ To access the system-client you will have to run this command as Administrator (
             if (resourceWriterDelegate != null)
             {
                 var resourceData =
-                    CommonClient.Operations.Get(operation.Id.GetValueOrDefault());
+                    CommonClient.Operations.Get(operation.Id);
                 foreach (var resource in resourceData.Resources.Where(x=>!string.IsNullOrWhiteSpace(x.ResourceId)))
                 {
                     resourceWriterDelegate(resource.ResourceType, resource.ResourceId);
@@ -108,7 +108,7 @@ To access the system-client you will have to run this command as Administrator (
                     return;
             }
 
-            WriteObject(CommonClient.Operations.Get(operation.Id.GetValueOrDefault()));
+            WriteObject(CommonClient.Operations.Get(operation.Id));
         }
 
         protected virtual void Dispose(bool disposing)

@@ -27,7 +27,7 @@ namespace Haipa.CommonClient
             /// </param>
             /// <param name='logTimeStamp'>
             /// </param>
-            public static Operation Get(this IOperations operations, System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?))
+            public static Operation Get(this IOperations operations, string id, System.DateTime? logTimeStamp = default(System.DateTime?))
             {
                 return operations.GetAsync(id, logTimeStamp).GetAwaiter().GetResult();
             }
@@ -48,7 +48,7 @@ namespace Haipa.CommonClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Operation> GetAsync(this IOperations operations, System.Guid id, System.DateTime? logTimeStamp = default(System.DateTime?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Operation> GetAsync(this IOperations operations, string id, System.DateTime? logTimeStamp = default(System.DateTime?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(id, logTimeStamp, null, cancellationToken).ConfigureAwait(false))
                 {
