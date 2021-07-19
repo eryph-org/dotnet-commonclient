@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/haipa/dotnet-commonclient.git"
+    "url": "git+https://github.com/eryph-org/dotnet-commonclient.git"
   },
   "author": "dbosoft",
   "license": "MIT",
