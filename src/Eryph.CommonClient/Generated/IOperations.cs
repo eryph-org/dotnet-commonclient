@@ -2,9 +2,9 @@
 // MIT
 // </auto-generated>
 
-namespace Haipa.CommonClient
+namespace Eryph.CommonClient
 {
-    using Haipa.ClientRuntime;
+    using Eryph.ClientRuntime;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace Haipa.CommonClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// <exception cref="Eryph.ClientRuntime.ApiServiceException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -41,7 +41,7 @@ namespace Haipa.CommonClient
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Eryph.ClientRuntime.EryphOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all Operations
         /// </summary>
@@ -58,13 +58,13 @@ namespace Haipa.CommonClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// <exception cref="Eryph.ClientRuntime.ApiServiceException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all Operations
         /// </summary>
@@ -80,7 +80,7 @@ namespace Haipa.CommonClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// <exception cref="Eryph.ClientRuntime.ApiServiceException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="Microsoft.Rest.SerializationException">
@@ -89,6 +89,6 @@ namespace Haipa.CommonClient
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

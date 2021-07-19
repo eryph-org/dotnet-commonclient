@@ -2,9 +2,9 @@
 // MIT
 // </auto-generated>
 
-namespace Haipa.CommonClient
+namespace Eryph.CommonClient
 {
-    using Haipa.ClientRuntime;
+    using Eryph.ClientRuntime;
     using Microsoft.Rest;
     using Models;
     using Newtonsoft.Json;
@@ -12,7 +12,7 @@ namespace Haipa.CommonClient
     /// <summary>
     /// Common Api
     /// </summary>
-    public partial interface IHaipaCommonClient : System.IDisposable
+    public partial interface IEryphCommonClient : System.IDisposable
     {
         /// <summary>
         /// The base URI of the service.
@@ -30,7 +30,7 @@ namespace Haipa.CommonClient
         JsonSerializerSettings DeserializationSettings { get; }
 
         /// <summary>
-        /// Credentials needed for the client to connect to Haipa.
+        /// Credentials needed for the client to connect to eryph.
         /// </summary>
         ServiceClientCredentials Credentials { get; }
 
