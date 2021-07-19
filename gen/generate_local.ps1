@@ -5,4 +5,4 @@ $location = Get-Location
 $tag = $settings.tag
 $spec = $settings.spec
 
-autorest  ..\haipa-api-spec\specification\$spec --tag=$tag --csharp-src-folder=$location --use=..\autorest.csharp --legacy  --csharp --debug
+autorest  ..\eryph-api-spec\specification\$spec --tag=$tag --csharp-src-folder=$location --use=..\autorest.csharp --legacy  --csharp --debug

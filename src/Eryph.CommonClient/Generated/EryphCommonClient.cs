@@ -2,9 +2,9 @@
 // MIT
 // </auto-generated>
 
-namespace Haipa.CommonClient
+namespace Eryph.CommonClient
 {
-    using Haipa.ClientRuntime;
+    using Eryph.ClientRuntime;
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Models;
@@ -18,7 +18,7 @@ namespace Haipa.CommonClient
     /// <summary>
     /// Common Api
     /// </summary>
-    public partial class HaipaCommonClient : ServiceClient<HaipaCommonClient>, IHaipaCommonClient, IHaipaClient
+    public partial class EryphCommonClient : ServiceClient<EryphCommonClient>, IEryphCommonClient, IEryphClient
     {
         /// <summary>
         /// The base URI of the service.
@@ -36,7 +36,7 @@ namespace Haipa.CommonClient
         public JsonSerializerSettings DeserializationSettings { get; private set; }
 
         /// <summary>
-        /// Credentials needed for the client to connect to Haipa.
+        /// Credentials needed for the client to connect to eryph.
         /// </summary>
         public ServiceClientCredentials Credentials { get; private set; }
 
@@ -58,31 +58,31 @@ namespace Haipa.CommonClient
         public virtual IOperations Operations { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling HaipaCommonClient.Dispose(). False: will not dispose provided httpClient</param>
-        protected HaipaCommonClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
+        /// True: will dispose the provided httpClient on calling EryphCommonClient.Dispose(). False: will not dispose provided httpClient</param>
+        protected EryphCommonClient(HttpClient httpClient, bool disposeHttpClient) : base(httpClient, disposeHttpClient)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected HaipaCommonClient(params DelegatingHandler[] handlers) : base(handlers)
+        protected EryphCommonClient(params DelegatingHandler[] handlers) : base(handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -90,13 +90,13 @@ namespace Haipa.CommonClient
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
         /// </param>
-        protected HaipaCommonClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
+        protected EryphCommonClient(HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : base(rootHandler, handlers)
         {
             Initialize();
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -107,7 +107,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected HaipaCommonClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
+        protected EryphCommonClient(System.Uri baseUri, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -117,7 +117,7 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
@@ -131,7 +131,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        protected HaipaCommonClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        protected EryphCommonClient(System.Uri baseUri, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -141,10 +141,10 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Haipa.
+        /// Required. Credentials needed for the client to connect to eryph.
         /// </param>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
@@ -152,7 +152,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public HaipaCommonClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public EryphCommonClient(ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (credentials == null)
             {
@@ -166,20 +166,20 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Haipa.
+        /// Required. Credentials needed for the client to connect to eryph.
         /// </param>
         /// <param name='httpClient'>
         /// HttpClient to be used
         /// </param>
         /// <param name='disposeHttpClient'>
-        /// True: will dispose the provided httpClient on calling HaipaCommonClient.Dispose(). False: will not dispose provided httpClient</param>
+        /// True: will dispose the provided httpClient on calling EryphCommonClient.Dispose(). False: will not dispose provided httpClient</param>
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public HaipaCommonClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
+        public EryphCommonClient(ServiceClientCredentials credentials, HttpClient httpClient, bool disposeHttpClient) : this(httpClient, disposeHttpClient)
         {
             if (credentials == null)
             {
@@ -193,10 +193,10 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Haipa.
+        /// Required. Credentials needed for the client to connect to eryph.
         /// </param>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -207,7 +207,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public HaipaCommonClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public EryphCommonClient(ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (credentials == null)
             {
@@ -221,13 +221,13 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
         /// </param>
         /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Haipa.
+        /// Required. Credentials needed for the client to connect to eryph.
         /// </param>
         /// <param name='handlers'>
         /// Optional. The delegating handlers to add to the http client pipeline.
@@ -235,7 +235,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public HaipaCommonClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
+        public EryphCommonClient(System.Uri baseUri, ServiceClientCredentials credentials, params DelegatingHandler[] handlers) : this(handlers)
         {
             if (baseUri == null)
             {
@@ -254,13 +254,13 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Initializes a new instance of the HaipaCommonClient class.
+        /// Initializes a new instance of the EryphCommonClient class.
         /// </summary>
         /// <param name='baseUri'>
         /// Optional. The base URI of the service.
         /// </param>
         /// <param name='credentials'>
-        /// Required. Credentials needed for the client to connect to Haipa.
+        /// Required. Credentials needed for the client to connect to eryph.
         /// </param>
         /// <param name='rootHandler'>
         /// Optional. The http client handler used to handle http transport.
@@ -271,7 +271,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        public HaipaCommonClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
+        public EryphCommonClient(System.Uri baseUri, ServiceClientCredentials credentials, HttpClientHandler rootHandler, params DelegatingHandler[] handlers) : this(rootHandler, handlers)
         {
             if (baseUri == null)
             {
@@ -328,7 +328,7 @@ namespace Haipa.CommonClient
                     }
             };
             CustomInitialize();
-            DeserializationSettings.Converters.Add(new Haipa.ClientRuntime.ApiErrorJsonConverter());
+            DeserializationSettings.Converters.Add(new Eryph.ClientRuntime.ApiErrorJsonConverter());
         }
     }
 }

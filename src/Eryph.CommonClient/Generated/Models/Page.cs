@@ -2,19 +2,19 @@
 // MIT
 // </auto-generated>
 
-namespace Haipa.CommonClient.Models
+namespace Eryph.CommonClient.Models
 {
-    using Haipa.ClientRuntime;
+    using Eryph.ClientRuntime;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
 
     /// <summary>
-    /// Defines a page in Haipa responses.
+    /// Defines a page in eryph responses.
     /// </summary>
     /// <typeparam name="T">Type of the page content items</typeparam>
     [JsonObject]
-    public class Page<T> : Haipa.ClientRuntime.IPage<T>
+    public class Page<T> : Eryph.ClientRuntime.IPage<T>
     {
          /// <summary>
          /// Gets the link to the next page.

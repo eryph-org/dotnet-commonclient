@@ -1,6 +1,6 @@
 param ($Configuration = "Debug", $OutputDir = ".")
 
-$cmdletName = "Haipa.CommonClient"
+$cmdletName = "Eryph.CommonClient"
 $excludedFiles = @("System.Management.Automation.dll", "JetBrains.Annotations.dll")
 
 # If this script is not running on a build server, remind user to 

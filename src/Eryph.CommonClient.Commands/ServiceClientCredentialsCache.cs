@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Haipa.ClientRuntime.Authentication;
-using Haipa.IdentityModel.Clients;
+using Eryph.ClientRuntime.Authentication;
+using Eryph.IdentityModel.Clients;
 using JetBrains.Annotations;
 using Microsoft.Rest;
 
-namespace Haipa.CommonClient.Commands
+namespace Eryph.CommonClient.Commands
 {
     public class ServiceClientCredentialsCache
     {
@@ -25,7 +25,7 @@ namespace Haipa.CommonClient.Commands
                 return _cache[key];
 
 
-            var serviceClientCredentials = await ApplicationTokenProvider.LogonWithHaipaClient(credentials, scopesArray).ConfigureAwait(false);
+            var serviceClientCredentials = await ApplicationTokenProvider.LogonWithEryphClient(credentials, scopesArray).ConfigureAwait(false);
             return _cache.GetOrAdd(key, serviceClientCredentials);
         }
     }

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Management.Automation;
-using Haipa.ClientRuntime;
+using Eryph.ClientRuntime;
 using JetBrains.Annotations;
 
-namespace Haipa.CommonClient.Commands
+namespace Eryph.CommonClient.Commands
 {
     [PublicAPI]
-    [Cmdlet(VerbsCommon.Get,"HaipaOperation", DefaultParameterSetName = "get")]
+    [Cmdlet(VerbsCommon.Get, "EryphOperation", DefaultParameterSetName = "get")]
     [OutputType(typeof(Operation))]
-    public class GetHaipaOperationCommand : ApiCmdLet
+    public class GetEryphOperationCommand : ApiCmdLet
     {
         [Parameter(
             ParameterSetName = "get",

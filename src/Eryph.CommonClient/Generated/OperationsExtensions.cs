@@ -2,9 +2,9 @@
 // MIT
 // </auto-generated>
 
-namespace Haipa.CommonClient
+namespace Eryph.CommonClient
 {
-    using Haipa.ClientRuntime;
+    using Eryph.ClientRuntime;
     using Models;
     using System.Threading;
     using System.Threading.Tasks;
@@ -69,7 +69,7 @@ namespace Haipa.CommonClient
             /// </param>
             /// <param name='count'>
             /// </param>
-            public static Haipa.ClientRuntime.IPage<Operation> List(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?))
+            public static Eryph.ClientRuntime.IPage<Operation> List(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?))
             {
                 return operations.ListAsync(logTimeStamp, count).GetAwaiter().GetResult();
             }
@@ -90,7 +90,7 @@ namespace Haipa.CommonClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Haipa.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Eryph.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(logTimeStamp, count, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -110,7 +110,7 @@ namespace Haipa.CommonClient
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static Haipa.ClientRuntime.IPage<Operation> ListNext(this IOperations operations, string nextPageLink)
+            public static Eryph.ClientRuntime.IPage<Operation> ListNext(this IOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -130,7 +130,7 @@ namespace Haipa.CommonClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Haipa.ClientRuntime.IPage<Operation>> ListNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Eryph.ClientRuntime.IPage<Operation>> ListNextAsync(this IOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

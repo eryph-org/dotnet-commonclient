@@ -4,28 +4,28 @@
     <TargetFrameworks>netstandard2.0;netcoreapp3.0;net472</TargetFrameworks>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Haipa/dotnet-commonclient</PackageProjectUrl>
-    <Copyright>dbosoft GmbH and Haipa contributors</Copyright>
-    <Authors>dbosoft and Haipa contributors</Authors>
+    <PackageProjectUrl>https://github.com/eryph-org/dotnet-commonclient</PackageProjectUrl>
+    <Copyright>dbosoft GmbH and eryph contributors</Copyright>
+    <Authors>dbosoft and eryph contributors</Authors>
     <Company>dbosoft GmbH</Company>
-    <Product>Haipa</Product>
-    <RepositoryUrl>https://github.com/Haipa/dotnet-commonclient</RepositoryUrl>
-    <Description>Cmdlets for Haipa Common API.</Description>
+    <Product>eryph</Product>
+    <RepositoryUrl>https://github.com/eryph-org/dotnet-commonclient</RepositoryUrl>
+    <Description>Cmdlets for eryph Common API.</Description>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitVersionTask" Version="5.3.7">
+    <PackageReference Include="GitVersion.MsBuild" Version="5.6.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Haipa.ClientRuntime.Authentication" Version="0.1.1-ci.2" />
+    <PackageReference Include="Eryph.ClientRuntime.Authentication" Version="0.1.1-ci.13" />
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Haipa.CommonClient\Haipa.CommonClient.csproj" />
+    <ProjectReference Include="..\Eryph.CommonClient\Eryph.CommonClient.csproj" />
   </ItemGroup>
 </Project>

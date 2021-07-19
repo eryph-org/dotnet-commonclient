@@ -2,9 +2,9 @@
 // MIT
 // </auto-generated>
 
-namespace Haipa.CommonClient
+namespace Eryph.CommonClient
 {
-    using Haipa.ClientRuntime;
+    using Eryph.ClientRuntime;
     using Microsoft.Rest;
     using Models;
     using Newtonsoft.Json;
@@ -19,7 +19,7 @@ namespace Haipa.CommonClient
     /// <summary>
     /// Operations operations
     /// </summary>
-    internal partial class Operations : IServiceOperations<HaipaCommonClient>, IOperations
+    internal partial class Operations : IServiceOperations<EryphCommonClient>, IOperations
     {
         /// <summary>
         /// Initializes a new instance of the Operations class.
@@ -30,7 +30,7 @@ namespace Haipa.CommonClient
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal Operations(HaipaCommonClient client)
+        internal Operations(EryphCommonClient client)
         {
             if (client == null)
             {
@@ -40,9 +40,9 @@ namespace Haipa.CommonClient
         }
 
         /// <summary>
-        /// Gets a reference to the HaipaCommonClient
+        /// Gets a reference to the EryphCommonClient
         /// </summary>
-        public HaipaCommonClient Client { get; private set; }
+        public EryphCommonClient Client { get; private set; }
 
         /// <summary>
         /// Get a operation
@@ -60,7 +60,7 @@ namespace Haipa.CommonClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// <exception cref="Eryph.ClientRuntime.ApiServiceException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -75,7 +75,7 @@ namespace Haipa.CommonClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (id == null)
             {
@@ -162,14 +162,14 @@ namespace Haipa.CommonClient
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new Haipa.ClientRuntime.ApiServiceException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new Eryph.ClientRuntime.ApiServiceException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                     ApiError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ApiError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Haipa.ClientRuntime.ApiServiceException(_errorBody.Message);
+                        ex = new Eryph.ClientRuntime.ApiServiceException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -195,7 +195,7 @@ namespace Haipa.CommonClient
                 throw ex;
             }
             // Create Result
-            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<Operation>();
+            var _result = new Eryph.ClientRuntime.EryphOperationResponse<Operation>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -243,7 +243,7 @@ namespace Haipa.CommonClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// <exception cref="Eryph.ClientRuntime.ApiServiceException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -252,7 +252,7 @@ namespace Haipa.CommonClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -338,14 +338,14 @@ namespace Haipa.CommonClient
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new Haipa.ClientRuntime.ApiServiceException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new Eryph.ClientRuntime.ApiServiceException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                     ApiError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ApiError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Haipa.ClientRuntime.ApiServiceException(_errorBody.Message);
+                        ex = new Eryph.ClientRuntime.ApiServiceException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -371,7 +371,7 @@ namespace Haipa.CommonClient
                 throw ex;
             }
             // Create Result
-            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>();
+            var _result = new Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -418,7 +418,7 @@ namespace Haipa.CommonClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        /// <exception cref="Haipa.ClientRuntime.ApiServiceException">
+        /// <exception cref="Eryph.ClientRuntime.ApiServiceException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
         /// <exception cref="SerializationException">
@@ -433,7 +433,7 @@ namespace Haipa.CommonClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -514,14 +514,14 @@ namespace Haipa.CommonClient
             string _responseContent = null;
             if ((int)_statusCode != 200)
             {
-                var ex = new Haipa.ClientRuntime.ApiServiceException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
+                var ex = new Eryph.ClientRuntime.ApiServiceException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
                 {
                     _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                     ApiError _errorBody =  Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ApiError>(_responseContent, Client.DeserializationSettings);
                     if (_errorBody != null)
                     {
-                        ex = new Haipa.ClientRuntime.ApiServiceException(_errorBody.Message);
+                        ex = new Eryph.ClientRuntime.ApiServiceException(_errorBody.Message);
                         ex.Body = _errorBody;
                     }
                 }
@@ -547,7 +547,7 @@ namespace Haipa.CommonClient
                 throw ex;
             }
             // Create Result
-            var _result = new Haipa.ClientRuntime.HaipaOperationResponse<Haipa.ClientRuntime.IPage<Operation>>();
+            var _result = new Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))

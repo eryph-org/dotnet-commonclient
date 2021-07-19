@@ -4,12 +4,12 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Haipa.ClientRuntime;
-using Haipa.IdentityModel.Clients;
+using Eryph.ClientRuntime;
+using Eryph.IdentityModel.Clients;
 using JetBrains.Annotations;
 using Microsoft.Rest;
 
-namespace Haipa.CommonClient.Commands
+namespace Eryph.CommonClient.Commands
 {
     [PublicAPI]
     public abstract class ApiCmdLet : PSCmdlet, IDisposable
@@ -17,11 +17,11 @@ namespace Haipa.CommonClient.Commands
         [Parameter]
         public ClientCredentials Credentials { get; set; }
 
-        protected HaipaCommonClient CommonClient;
+        protected EryphCommonClient CommonClient;
 
         protected override void BeginProcessing()
         {
-            CommonClient = new HaipaCommonClient(GetCredentials("common_api"));
+            CommonClient = new EryphCommonClient(GetCredentials("common_api"));
 
         }
 
@@ -32,16 +32,16 @@ namespace Haipa.CommonClient.Commands
             if (clientCredentials != null) return clientCredentials;
 
 
-            var obj = SessionState.InvokeCommand.InvokeScript("Get-HaipaClientCredentials").FirstOrDefault();
+            var obj = SessionState.InvokeCommand.InvokeScript("Get-EryphClientCredentials").FirstOrDefault();
             if (obj?.BaseObject is ClientCredentials credentials)
                 clientCredentials = credentials;
 
             if (clientCredentials == null)
             {
-                throw new InvalidOperationException(@"Could not find credentials for Haipa.
-You can use the parameter Credentials to set the haipa credentials. If not set, the credentials from CmdLet Get-HaipaClientCredentials will be used.
+                throw new InvalidOperationException(@"Could not find credentials for eryph.
+You can use the parameter Credentials to set the eryph credentials. If not set, the credentials from CmdLet Get-EryphClientCredentials will be used.
 In this case the credentials will be searched in your local configuration. 
-If there is no default haipa client in your configuration the command will try to access the default system-client of a local running haipa zero or identity server.
+If there is no default eryph client in your configuration the command will try to access the default system-client of a local running eryph zero or identity server.
 To access the system-client you will have to run this command as Administrator (Windows) or root (Linux).
 ");
             }
@@ -88,7 +88,7 @@ To access the system-client you will have to run this command as Administrator (
                         continue;
                     case "Failed":
                         WriteError(new ErrorRecord(new ApiServiceException(currentOperation.StatusMessage),
-                            "HaipaOperationFailed", ErrorCategory.InvalidResult, operation.Id));
+                            "EryphOperationFailed", ErrorCategory.InvalidResult, operation.Id));
                         break;
                 }
 
