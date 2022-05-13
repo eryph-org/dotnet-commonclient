@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GitVersion.MsBuild" Version="5.6.10">
+    <PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Eryph.ClientRuntime" Version="0.1.1-ci.13" />
+    <PackageReference Include="Eryph.ClientRuntime" Version="0.2.0" />
   </ItemGroup>
 
 </Project>
