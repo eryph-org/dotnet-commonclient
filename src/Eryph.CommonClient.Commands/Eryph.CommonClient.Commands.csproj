@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1;net461</TargetFrameworks>
@@ -15,11 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Eryph.ClientRuntime.Powershell" Version="0.2.1-ci.7" />
     <PackageReference Include="GitVersion.MsBuild" Version="5.10.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Eryph.ClientRuntime.Authentication" Version="0.2.1-ci.5" />
+    <PackageReference Include="Eryph.ClientRuntime.Authentication" Version="0.2.1-ci.7" />
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
