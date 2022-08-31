@@ -5,6 +5,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Eryph.ClientRuntime;
+using Eryph.ClientRuntime.Configuration;
 using Eryph.ClientRuntime.Powershell;
 using JetBrains.Annotations;
 using Microsoft.Rest;
@@ -19,7 +20,18 @@ namespace Eryph.CommonClient.Commands
 
         protected override void BeginProcessing()
         {
-            CommonClient = new EryphCommonClient(GetCredentials("common_api"));
+            CommonClient = new EryphCommonClient(
+                GetEndpointUri("common"), GetCredentials("common_api"));
+
+        }
+
+
+        protected Uri GetEndpointUri(string endpoint)
+        {
+
+            var credentials = GetClientCredentials();
+            var endpointLookup = new EndpointLookup(new PowershellEnvironment(SessionState));
+            return endpointLookup.GetEndpoint(endpoint, credentials.Configuration);
 
         }
 
