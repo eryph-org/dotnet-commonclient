@@ -53,6 +53,11 @@ namespace Eryph.CommonClient
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IProjectsOperations.
+        /// </summary>
+        public virtual IProjectsOperations Projects { get; private set; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         public virtual IOperations Operations { get; private set; }
@@ -298,8 +303,9 @@ namespace Eryph.CommonClient
         /// </summary>
         private void Initialize()
         {
+            Projects = new ProjectsOperations(this);
             Operations = new Operations(this);
-            BaseUri = new System.Uri("https://localhost:62189/common");
+            BaseUri = new System.Uri("https://localhost:59935/common");
             AcceptLanguage = "en-US";
             GenerateClientRequestId = true;
             SerializationSettings = new JsonSerializerSettings

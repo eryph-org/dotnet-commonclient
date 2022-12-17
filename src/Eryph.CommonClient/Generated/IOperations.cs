@@ -26,6 +26,8 @@ namespace Eryph.CommonClient
         /// </param>
         /// <param name='logTimeStamp'>
         /// </param>
+        /// <param name='expand'>
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -41,7 +43,7 @@ namespace Eryph.CommonClient
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<Eryph.ClientRuntime.EryphOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Eryph.ClientRuntime.EryphOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all Operations
         /// </summary>
@@ -49,6 +51,8 @@ namespace Eryph.CommonClient
         /// List all Operations
         /// </remarks>
         /// <param name='logTimeStamp'>
+        /// </param>
+        /// <param name='expand'>
         /// </param>
         /// <param name='count'>
         /// </param>
@@ -64,7 +68,7 @@ namespace Eryph.CommonClient
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all Operations
         /// </summary>

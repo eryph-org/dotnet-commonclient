@@ -27,9 +27,11 @@ namespace Eryph.CommonClient
             /// </param>
             /// <param name='logTimeStamp'>
             /// </param>
-            public static Operation Get(this IOperations operations, string id, System.DateTime? logTimeStamp = default(System.DateTime?))
+            /// <param name='expand'>
+            /// </param>
+            public static Operation Get(this IOperations operations, string id, System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string))
             {
-                return operations.GetAsync(id, logTimeStamp).GetAwaiter().GetResult();
+                return operations.GetAsync(id, logTimeStamp, expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -45,12 +47,14 @@ namespace Eryph.CommonClient
             /// </param>
             /// <param name='logTimeStamp'>
             /// </param>
+            /// <param name='expand'>
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Operation> GetAsync(this IOperations operations, string id, System.DateTime? logTimeStamp = default(System.DateTime?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Operation> GetAsync(this IOperations operations, string id, System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(id, logTimeStamp, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(id, logTimeStamp, expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -67,11 +71,13 @@ namespace Eryph.CommonClient
             /// </param>
             /// <param name='logTimeStamp'>
             /// </param>
+            /// <param name='expand'>
+            /// </param>
             /// <param name='count'>
             /// </param>
-            public static Eryph.ClientRuntime.IPage<Operation> List(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?))
+            public static Eryph.ClientRuntime.IPage<Operation> List(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), bool? count = default(bool?))
             {
-                return operations.ListAsync(logTimeStamp, count).GetAwaiter().GetResult();
+                return operations.ListAsync(logTimeStamp, expand, count).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -85,14 +91,16 @@ namespace Eryph.CommonClient
             /// </param>
             /// <param name='logTimeStamp'>
             /// </param>
+            /// <param name='expand'>
+            /// </param>
             /// <param name='count'>
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Eryph.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Eryph.ClientRuntime.IPage<Operation>> ListAsync(this IOperations operations, System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), bool? count = default(bool?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(logTimeStamp, count, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(logTimeStamp, expand, count, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

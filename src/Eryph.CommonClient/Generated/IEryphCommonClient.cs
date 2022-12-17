@@ -48,6 +48,11 @@ namespace Eryph.CommonClient
 
 
         /// <summary>
+        /// Gets the IProjectsOperations.
+        /// </summary>
+        IProjectsOperations Projects { get; }
+
+        /// <summary>
         /// Gets the IOperations.
         /// </summary>
         IOperations Operations { get; }

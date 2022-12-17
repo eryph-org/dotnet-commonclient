@@ -54,6 +54,8 @@ namespace Eryph.CommonClient
         /// </param>
         /// <param name='logTimeStamp'>
         /// </param>
+        /// <param name='expand'>
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -75,7 +77,7 @@ namespace Eryph.CommonClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Operation>> GetWithHttpMessagesAsync(string id, System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (id == null)
             {
@@ -89,6 +91,7 @@ namespace Eryph.CommonClient
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("logTimeStamp", logTimeStamp);
+                tracingParameters.Add("expand", expand);
                 tracingParameters.Add("id", id);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
@@ -101,6 +104,10 @@ namespace Eryph.CommonClient
             if (logTimeStamp != null)
             {
                 _queryParameters.Add(string.Format("logTimeStamp={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(logTimeStamp, Client.SerializationSettings).Trim('"'))));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -235,6 +242,8 @@ namespace Eryph.CommonClient
         /// </remarks>
         /// <param name='logTimeStamp'>
         /// </param>
+        /// <param name='expand'>
+        /// </param>
         /// <param name='count'>
         /// </param>
         /// <param name='customHeaders'>
@@ -252,7 +261,7 @@ namespace Eryph.CommonClient
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Eryph.ClientRuntime.EryphOperationResponse<Eryph.ClientRuntime.IPage<Operation>>> ListWithHttpMessagesAsync(System.DateTime? logTimeStamp = default(System.DateTime?), string expand = default(string), bool? count = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -262,6 +271,7 @@ namespace Eryph.CommonClient
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("logTimeStamp", logTimeStamp);
+                tracingParameters.Add("expand", expand);
                 tracingParameters.Add("count", count);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
@@ -273,6 +283,10 @@ namespace Eryph.CommonClient
             if (logTimeStamp != null)
             {
                 _queryParameters.Add(string.Format("logTimeStamp={0}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(logTimeStamp, Client.SerializationSettings).Trim('"'))));
+            }
+            if (expand != null)
+            {
+                _queryParameters.Add(string.Format("expand={0}", System.Uri.EscapeDataString(expand)));
             }
             if (count != null)
             {

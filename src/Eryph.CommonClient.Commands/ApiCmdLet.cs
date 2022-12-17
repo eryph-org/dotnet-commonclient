@@ -45,15 +45,32 @@ namespace Eryph.CommonClient.Commands
             Dispose();
         }
 
-        protected void WaitForOperation(Operation operation, Action<string,string> resourceWriterDelegate = null)
+        protected void ResourceWriter(Operation operation, Action<string, string> resourceWriterDelegate)
+        {
+            var resourceData =
+                CommonClient.Operations.Get(operation.Id, expand: "resources");
+            foreach (var resource in resourceData.Resources.Where(x => !string.IsNullOrWhiteSpace(x.ResourceId)))
+            {
+                resourceWriterDelegate(resource.ResourceType, resource.ResourceId);
+            }
+
+            if (resourceData.Resources.Count > 0)
+                return;
+
+        }
+
+
+        protected void WaitForOperation(Operation operation, Action<Operation> writerDelegate = null)
         {
             var timeStamp = DateTime.Parse("2018-01-01", CultureInfo.InvariantCulture);
+
+
             var processedLogIds = new List<string>();
             while (!Stopping)
             {
                 Task.Delay(1000).GetAwaiter().GetResult();
 
-                var currentOperation = CommonClient.Operations.Get(operation.Id, timeStamp);
+                var currentOperation = CommonClient.Operations.Get(operation.Id, timeStamp, expand: "logs");
 
                 foreach (var logEntry in currentOperation.LogEntries)
                 {
@@ -81,17 +98,11 @@ namespace Eryph.CommonClient.Commands
                 break;
             }
 
-            if (resourceWriterDelegate != null)
-            {
-                var resourceData =
-                    CommonClient.Operations.Get(operation.Id);
-                foreach (var resource in resourceData.Resources.Where(x=>!string.IsNullOrWhiteSpace(x.ResourceId)))
-                {
-                    resourceWriterDelegate(resource.ResourceType, resource.ResourceId);
-                }
 
-                if (resourceData.Resources.Count > 0)
-                    return;
+            if (writerDelegate != null)
+            {
+                writerDelegate(operation);
+                return;
             }
 
             WriteObject(CommonClient.Operations.Get(operation.Id));
@@ -109,6 +120,33 @@ namespace Eryph.CommonClient.Commands
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+
+        protected void WaitForProject(Operation operation, bool wait, bool preferWriteProject, string knownProjectId = default)
+        {
+            if (!wait)
+            {
+                if (knownProjectId == default || !preferWriteProject)
+                    WriteObject(operation);
+                else
+                    WriteObject(this.CommonClient.Projects.Get(knownProjectId));
+                return;
+            }
+
+            WaitForOperation(operation, preferWriteProject ? (Action<Operation>) WriteProject : null);
+        }
+
+
+        private void WriteProject(Operation operation)
+        {
+            var newOp = CommonClient.Operations.Get(operation.Id, expand: "projects");
+            var projectData = newOp.Projects.FirstOrDefault();
+            if (projectData != null)
+            {
+                WriteObject(CommonClient.Projects.Get(projectData.Id));
+            }
+
         }
     }
 }
