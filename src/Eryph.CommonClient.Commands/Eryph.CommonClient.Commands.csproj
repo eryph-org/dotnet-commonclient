@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Eryph.ClientRuntime.Powershell" Version="0.4.1" />
-    <PackageReference Include="GitVersion.MsBuild" Version="5.11.1">
+    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
