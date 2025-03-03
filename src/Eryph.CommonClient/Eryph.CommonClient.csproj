@@ -22,7 +22,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Eryph.ClientRuntime" Version="0.4.3-ci.4" />
+    <PackageReference Include="Eryph.ClientRuntime" Version="0.4.3-PullRequest0035.6" />
   </ItemGroup>
 
 </Project>
